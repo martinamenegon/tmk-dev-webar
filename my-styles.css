@@ -51,6 +51,10 @@ model-viewer {
   background-color: unset;
 }
 
+model-viewer::part(default-ar-button) {
+  display: none;
+}
+
 
 #ar-button {
   position: fixed;
