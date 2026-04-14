@@ -174,4 +174,29 @@ model-viewer::part(default-ar-button) {
   color: rgba(255, 255, 255, 0.84);
 }
 
+#about-content h1,
+#about-content h2,
+#about-content h3 {
+  margin: 0 32px 12px 0;
+  line-height: 1.2;
+}
+
+#about-content p {
+  margin: 0 0 12px;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+#about-content ul,
+#about-content ol {
+  margin: 0 0 12px;
+  padding-left: 18px;
+}
+
+#about-content li {
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+
 
