@@ -30,9 +30,9 @@ the rest leaveit as it is!-->
 
     <button id="info-button" aria-label="Open info page">i</button>
 
-    <section id="info-panel" aria-hidden="true">
+    <section id="info-overlay" aria-hidden="true">
       <div class="info-content">
-        <button id="close-info-button" aria-label="Close info page">Close</button>
+        <button id="close-info-button" aria-label="Close info popup">X</button>
         <h1>Name Surname</h1>
         <p>
           Add your bio or story text here. You can describe the project context,
@@ -88,16 +88,16 @@ the rest leaveit as it is!-->
     <script>
       const infoButton = document.getElementById("info-button");
       const closeInfoButton = document.getElementById("close-info-button");
-      const infoPanel = document.getElementById("info-panel");
+      const infoOverlay = document.getElementById("info-overlay");
 
       function openInfoPanel() {
-        infoPanel.classList.add("is-visible");
-        infoPanel.setAttribute("aria-hidden", "false");
+        infoOverlay.classList.add("is-visible");
+        infoOverlay.setAttribute("aria-hidden", "false");
       }
 
       function closeInfoPanel() {
-        infoPanel.classList.remove("is-visible");
-        infoPanel.setAttribute("aria-hidden", "true");
+        infoOverlay.classList.remove("is-visible");
+        infoOverlay.setAttribute("aria-hidden", "true");
       }
 
       infoButton.addEventListener("click", openInfoPanel);
