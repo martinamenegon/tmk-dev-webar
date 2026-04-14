@@ -23,19 +23,13 @@
   </head>
 
   <body>
-    <!-- HERE IS WHERE THE MAGIC HAPPENS!
-src = link to your glb asset
-shadow-intensity= how visible you want your shadows to be
-the rest leaveit as it is!-->
-
     <main class="page-layout">
-      <header class="top-bar" aria-label="Page header">
-        <button id="info-button" aria-label="Jump to about section">chimera name</button>
-        <p class="credit-line">© name</p>
+      <header class="meta-top" aria-label="Page controls">
+        <a id="about-link" href="./about.html" aria-label="Open about page">About</a>
         <button id="ar-button" aria-label="Open AR view">AR</button>
       </header>
 
-      <section class="viewer-card">
+      <section class="viewer-stage" aria-label="3D viewer area">
         <model-viewer
           id="main-model-viewer"
           src="./assets/cube.glb"
@@ -48,51 +42,25 @@ the rest leaveit as it is!-->
           ar-scale="auto"
           auto-rotate
         ></model-viewer>
+        <p class="mode-label">3D</p>
       </section>
 
-      <section id="about-section" class="about-panel" aria-label="About section">
-        <h2>About:</h2>
-        <div id="about-content">Loading...</div>
-      </section>
+      <footer class="meta-bottom" aria-label="Project metadata">
+        <p class="chimera-name">chimera name</p>
+        <p class="credit-line">© name</p>
+      </footer>
     </main>
 
-    <!-- DO NOT DELETE! -->
-    <!-- 💁 Include both scripts below to support all browsers! -->
-
-    <!-- Loads <model-viewer> for modern browsers: -->
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-      const infoButton = document.getElementById("info-button");
       const arButton = document.getElementById("ar-button");
       const modelViewer = document.getElementById("main-model-viewer");
-      const aboutContent = document.getElementById("about-content");
-      const aboutSection = document.getElementById("about-section");
-
-      async function loadAboutContent() {
-        try {
-          const response = await fetch("./about.md");
-          if (!response.ok) {
-            throw new Error("Could not load about.md");
-          }
-          const markdown = await response.text();
-          aboutContent.innerHTML = marked.parse(markdown);
-        } catch (error) {
-          aboutContent.innerHTML =
-            "<h1>About</h1><p>Could not load about.md. Please make sure the file exists in the project root.</p>";
-        }
-      }
-
-      infoButton.addEventListener("click", () => {
-        aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
       arButton.addEventListener("click", () => {
         modelViewer.activateAR();
       });
-      loadAboutContent();
     </script>
   </body>
 </html>
