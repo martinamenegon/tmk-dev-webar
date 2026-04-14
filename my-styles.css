@@ -162,9 +162,7 @@ model-viewer::part(default-ar-button) {
   width: min(900px, calc(100vw - 90px));
   max-height: calc(100vh - 130px);
   overflow-y: auto;
-  background: #fff;
-  border: 1px solid #000;
-  padding: 20px 24px;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -234,7 +232,7 @@ model-viewer::part(default-ar-button) {
   #about-content {
     width: min(100vw - 34px, 620px);
     max-height: calc(100vh - 110px);
-    padding: 14px 16px;
+    padding: 0;
   }
 
   #about-content h1,
