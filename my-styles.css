@@ -24,7 +24,6 @@ body {
   align-items: center;
 }
 
-#about-link,
 #ar-button {
   display: inline-flex;
   align-items: center;
@@ -46,9 +45,22 @@ body {
   transition: all 0.18s ease;
 }
 
-#about-link:hover,
 #ar-button:hover {
   background: rgba(0, 0, 0, 0.05);
+}
+
+#about-link {
+  color: rgba(196, 57, 26, 0.92);
+  font-size: 34px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+#about-link:hover {
+  opacity: 0.75;
 }
 
 .viewer-stage {
@@ -71,15 +83,14 @@ model-viewer::part(default-ar-button) {
 
 .side-meta {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: 8px;
+  top: 50%;
   z-index: 10;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-  transform: rotate(-90deg);
-  transform-origin: bottom right;
+  align-items: center;
+  gap: 14px;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center;
 }
 
 .chimera-name {
@@ -92,7 +103,7 @@ model-viewer::part(default-ar-button) {
 
 .credit-line {
   margin: 0;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 0.02em;
   color: rgba(196, 57, 26, 0.9);
 }
@@ -108,19 +119,22 @@ model-viewer::part(default-ar-button) {
   }
 
   .credit-line {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .side-meta {
-    right: 12px;
-    bottom: 12px;
-    gap: 6px;
+    right: 4px;
+    gap: 8px;
   }
 
   .meta-top {
     top: 12px;
     left: 12px;
     right: 12px;
+  }
+
+  #about-link {
+    font-size: 26px;
   }
 }
 
