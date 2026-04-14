@@ -1,7 +1,5 @@
 # CHIMERA Name
 
-by: Your Name 
-
 You can use Markdown formatting, for example:
 
 - Bullet lists
