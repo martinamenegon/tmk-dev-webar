@@ -29,6 +29,7 @@ shadow-intensity= how visible you want your shadows to be
 the rest leaveit as it is!-->
 
     <button id="info-button" aria-label="Open info page">i</button>
+    <button id="ar-button" aria-label="Open AR view">AR</button>
 
     <section id="info-overlay" aria-hidden="true">
       <div class="info-content">
@@ -43,6 +44,7 @@ the rest leaveit as it is!-->
     </section>
 
     <model-viewer
+      id="main-model-viewer"
       src="./assets/cube.glb"
       shadow-intensity="3"
       ar
@@ -52,15 +54,7 @@ the rest leaveit as it is!-->
       autoplay
       ar-scale="auto"
       auto-rotate
-    >
-      <!-- *optional: REPLACE THE URL WITH YOUR GRAPHIC FOR THE AR BUTTON -->
-      <button
-        slot="ar-button"
-        id="ar-button"
-      >
-        AR
-      </button>
-    </model-viewer>
+    ></model-viewer>
 
     <!-- DO NOT DELETE! -->
     <footer>
@@ -86,8 +80,10 @@ the rest leaveit as it is!-->
     ></script>
     <script>
       const infoButton = document.getElementById("info-button");
+      const arButton = document.getElementById("ar-button");
       const closeInfoButton = document.getElementById("close-info-button");
       const infoOverlay = document.getElementById("info-overlay");
+      const modelViewer = document.getElementById("main-model-viewer");
 
       function openInfoPanel() {
         infoOverlay.classList.add("is-visible");
@@ -101,6 +97,9 @@ the rest leaveit as it is!-->
 
       infoButton.addEventListener("click", openInfoPanel);
       closeInfoButton.addEventListener("click", closeInfoPanel);
+      arButton.addEventListener("click", () => {
+        modelViewer.activateAR();
+      });
     </script>
   </body>
 </html>
