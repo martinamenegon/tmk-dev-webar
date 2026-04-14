@@ -85,10 +85,15 @@ model-viewer::part(default-ar-button) {
   bottom: 18px;
   z-index: 10;
   display: flex;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 14px;
   transform: rotate(-90deg);
   transform-origin: bottom right;
+}
+
+.side-meta p {
+  white-space: nowrap;
 }
 
 .chimera-name {
@@ -124,6 +129,7 @@ model-viewer::part(default-ar-button) {
     right: 2px;
     top: auto;
     bottom: 2px;
+    flex-direction: row-reverse;
     gap: 8px;
     transform: rotate(-90deg);
     transform-origin: bottom right;
