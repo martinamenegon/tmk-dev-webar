@@ -147,7 +147,7 @@ model-viewer::part(default-ar-button) {
   width: 240px;
   height: 240px;
   padding: 10px;
-  background: #fff;
+  background: transparent;
   box-sizing: border-box;
 }
 
