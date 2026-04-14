@@ -107,10 +107,16 @@
         aboutToggle.setAttribute("aria-label", "Open about page");
       }
 
+      function closeQrLayer() {
+        qrLayer.classList.remove("is-visible");
+        qrLayer.setAttribute("aria-hidden", "true");
+      }
+
       aboutToggle.addEventListener("click", async () => {
         if (aboutOpen) {
           closeAbout();
         } else {
+          closeQrLayer();
           await openAbout();
         }
       });
@@ -134,6 +140,7 @@
 
       arButton.addEventListener("click", () => {
         if (isDesktopPointer()) {
+          if (aboutOpen) closeAbout();
           ensureQrCode();
           qrLayer.classList.add("is-visible");
           qrLayer.setAttribute("aria-hidden", "false");
@@ -143,8 +150,7 @@
       });
 
       qrLayer.addEventListener("click", () => {
-        qrLayer.classList.remove("is-visible");
-        qrLayer.setAttribute("aria-hidden", "true");
+        closeQrLayer();
       });
     </script>
   </body>
