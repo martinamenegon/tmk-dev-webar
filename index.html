@@ -28,6 +28,20 @@ src = link to your glb asset
 shadow-intensity= how visible you want your shadows to be
 the rest leaveit as it is!-->
 
+    <button id="info-button" aria-label="Open info page">i</button>
+
+    <section id="info-panel" aria-hidden="true">
+      <div class="info-content">
+        <button id="close-info-button" aria-label="Close info page">Close</button>
+        <h1>Name Surname</h1>
+        <p>
+          Add your bio or story text here. You can describe the project context,
+          artistic process, or any narrative you want viewers to read before they
+          return to the 3D/AR model.
+        </p>
+      </div>
+    </section>
+
     <model-viewer
       src="./assets/cube.glb"
       shadow-intensity="3"
@@ -71,5 +85,23 @@ the rest leaveit as it is!-->
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
+    <script>
+      const infoButton = document.getElementById("info-button");
+      const closeInfoButton = document.getElementById("close-info-button");
+      const infoPanel = document.getElementById("info-panel");
+
+      function openInfoPanel() {
+        infoPanel.classList.add("is-visible");
+        infoPanel.setAttribute("aria-hidden", "false");
+      }
+
+      function closeInfoPanel() {
+        infoPanel.classList.remove("is-visible");
+        infoPanel.setAttribute("aria-hidden", "true");
+      }
+
+      infoButton.addEventListener("click", openInfoPanel);
+      closeInfoButton.addEventListener("click", closeInfoPanel);
+    </script>
   </body>
 </html>
