@@ -85,15 +85,9 @@ model-viewer::part(default-ar-button) {
   bottom: 18px;
   z-index: 10;
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 14px;
-  transform: rotate(-90deg);
-  transform-origin: bottom right;
-}
-
-.side-meta p {
-  white-space: nowrap;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 10px;
 }
 
 .chimera-name {
@@ -102,6 +96,9 @@ model-viewer::part(default-ar-button) {
   line-height: 1;
   letter-spacing: 0;
   color: rgba(196, 57, 26, 0.9);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
 }
 
 .credit-line {
@@ -109,6 +106,9 @@ model-viewer::part(default-ar-button) {
   font-size: 18px;
   letter-spacing: 0.02em;
   color: rgba(196, 57, 26, 0.9);
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  white-space: nowrap;
 }
 
 @media (max-width: 700px) {
@@ -129,10 +129,9 @@ model-viewer::part(default-ar-button) {
     right: 2px;
     top: auto;
     bottom: 2px;
-    flex-direction: row-reverse;
     gap: 8px;
-    transform: rotate(-90deg);
-    transform-origin: bottom right;
+    flex-direction: row;
+    align-items: flex-end;
   }
 
   .meta-top {
