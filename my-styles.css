@@ -1,72 +1,30 @@
 body {
   margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
+  padding: 14px;
+  min-height: 100vh;
+  width: 100%;
   background-color: #050505;
-  overflow: hidden;
+  box-sizing: border-box;
   color: #f2f2f2;
 }
 
-a:link {
-  text-decoration: none;
-  color: white;
-}
-
-a:visited { 
-  text-decoration: none; 
-  color: white;
-}
-
-a:hover { 
-  text-decoration: none; 
-  color: yellow;
-}
-
-a:active { 
-  text-decoration: none; 
-  color: yellow;
-}
-
-hr {
-  border-top: 0px solid white;
-}
-
 .page-layout {
-  position: fixed;
-  inset: 0;
-  padding: 14px;
+  width: min(1080px, 100%);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  box-sizing: border-box;
-  max-width: 980px;
-  margin: 0 auto;
+  gap: 12px;
 }
 
-.viewer-card {
-  position: relative;
-  flex: 1 1 auto;
-  min-height: 0;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 0;
-  overflow: hidden;
-  background: #020202;
+.top-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+  padding-bottom: 8px;
 }
 
-model-viewer {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  inset: 0;
-  background-color: unset;
-}
-
-model-viewer::part(default-ar-button) {
-  display: none;
-}
-
-
+#info-button,
 #ar-button {
   min-width: 72px;
   height: 32px;
@@ -83,155 +41,80 @@ model-viewer::part(default-ar-button) {
   line-height: 30px;
   text-align: center;
   cursor: pointer;
-  transition: all 0.24s ease;
-  display: none;
+  transition: all 0.2s ease;
 }
 
-#ar-button:active {
-  opacity: 0.75;
+#info-button {
+  justify-self: start;
 }
 
+#ar-button {
+  justify-self: end;
+}
+
+#info-button:hover,
 #ar-button:hover {
   background: rgba(255, 255, 255, 0.06);
   border-color: rgba(255, 255, 255, 0.74);
 }
 
-@media (hover: none) and (pointer: coarse) {
-  #ar-button {
-    display: block;
-  }
-}
-
-#info-button {
-  min-width: 72px;
-  height: 32px;
-  padding: 0 14px;
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 7px;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.9);
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.24s ease;
-}
-
-#info-button:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.74);
-}
-
-.controls-panel {
-  flex: 0 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  border-radius: 0;
-  padding: 8px 10px 10px;
-  background: rgba(0, 0, 0, 0.3);
-}
-
-.action-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
 .credit-line {
-  margin: 10px 0 0;
+  margin: 0;
   text-align: center;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.62);
+  color: rgba(255, 255, 255, 0.72);
 }
 
-#info-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 30;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.42);
-  backdrop-filter: blur(2px);
-}
-
-#info-overlay.is-visible {
-  display: flex;
-}
-
-.info-content {
+.viewer-card {
   position: relative;
-  width: min(560px, 88vw);
-  max-height: 78vh;
-  overflow-y: auto;
-  padding: 28px 28px 24px;
-  border-radius: 0;
-  background: rgba(8, 8, 8, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
-  color: rgba(255, 255, 255, 0.92);
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  text-align: left;
+  height: min(72vh, 760px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  overflow: hidden;
+  background: #020202;
 }
 
-.info-content::before {
-  content: none;
-}
-
-#close-info-button {
+model-viewer {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 32px;
-  height: 32px;
-  border: 0;
-  border-radius: 50%;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 17px;
-  line-height: 1;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  inset: 0;
+  background-color: unset;
 }
 
-#close-info-button:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.12);
+model-viewer::part(default-ar-button) {
+  display: none;
 }
 
-.info-content h1 {
-  margin: 0 32px 12px 0;
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+.about-panel {
+  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  padding-top: 10px;
 }
 
-.info-content p {
-  margin: 0;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.84);
+.about-panel h2 {
+  margin: 0 0 10px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.86);
 }
 
 #about-content h1,
 #about-content h2,
 #about-content h3 {
-  margin: 0 32px 12px 0;
+  margin: 0 0 10px;
   line-height: 1.2;
 }
 
 #about-content p {
   margin: 0 0 12px;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.84);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 22px;
+  line-height: 1.22;
+  color: rgba(255, 255, 255, 0.86);
 }
 
 #about-content ul,
@@ -242,13 +125,8 @@ model-viewer::part(default-ar-button) {
 
 #about-content li {
   margin: 0 0 6px;
-  line-height: 1.5;
-}
-
-@media (hover: hover) and (pointer: fine) {
-  #ar-button {
-    display: none;
-  }
+  line-height: 1.4;
+  font-family: Georgia, "Times New Roman", serif;
 }
 
 

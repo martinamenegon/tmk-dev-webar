@@ -28,14 +28,13 @@ src = link to your glb asset
 shadow-intensity= how visible you want your shadows to be
 the rest leaveit as it is!-->
 
-    <section id="info-overlay" aria-hidden="true">
-      <div class="info-content">
-        <button id="close-info-button" aria-label="Close info popup">X</button>
-        <div id="about-content">Loading...</div>
-      </div>
-    </section>
-
     <main class="page-layout">
+      <header class="top-bar" aria-label="Page header">
+        <button id="info-button" aria-label="Jump to about section">chimera name</button>
+        <p class="credit-line">© name</p>
+        <button id="ar-button" aria-label="Open AR view">AR</button>
+      </header>
+
       <section class="viewer-card">
         <model-viewer
           id="main-model-viewer"
@@ -51,12 +50,9 @@ the rest leaveit as it is!-->
         ></model-viewer>
       </section>
 
-      <section class="controls-panel" aria-label="Viewer controls">
-        <div class="action-row">
-          <button id="info-button" aria-label="Open info page">Info</button>
-          <button id="ar-button" aria-label="Open AR view">AR</button>
-        </div>
-        <p class="credit-line">© your name</p>
+      <section id="about-section" class="about-panel" aria-label="About section">
+        <h2>About:</h2>
+        <div id="about-content">Loading...</div>
       </section>
     </main>
 
@@ -72,16 +68,11 @@ the rest leaveit as it is!-->
     <script>
       const infoButton = document.getElementById("info-button");
       const arButton = document.getElementById("ar-button");
-      const closeInfoButton = document.getElementById("close-info-button");
-      const infoOverlay = document.getElementById("info-overlay");
       const modelViewer = document.getElementById("main-model-viewer");
       const aboutContent = document.getElementById("about-content");
-
-      let aboutLoaded = false;
+      const aboutSection = document.getElementById("about-section");
 
       async function loadAboutContent() {
-        if (aboutLoaded) return;
-
         try {
           const response = await fetch("./about.md");
           if (!response.ok) {
@@ -89,29 +80,19 @@ the rest leaveit as it is!-->
           }
           const markdown = await response.text();
           aboutContent.innerHTML = marked.parse(markdown);
-          aboutLoaded = true;
         } catch (error) {
           aboutContent.innerHTML =
             "<h1>About</h1><p>Could not load about.md. Please make sure the file exists in the project root.</p>";
         }
       }
 
-      async function openInfoPanel() {
-        await loadAboutContent();
-        infoOverlay.classList.add("is-visible");
-        infoOverlay.setAttribute("aria-hidden", "false");
-      }
-
-      function closeInfoPanel() {
-        infoOverlay.classList.remove("is-visible");
-        infoOverlay.setAttribute("aria-hidden", "true");
-      }
-
-      infoButton.addEventListener("click", openInfoPanel);
-      closeInfoButton.addEventListener("click", closeInfoPanel);
+      infoButton.addEventListener("click", () => {
+        aboutSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
       arButton.addEventListener("click", () => {
         modelViewer.activateAR();
       });
+      loadAboutContent();
     </script>
   </body>
 </html>
