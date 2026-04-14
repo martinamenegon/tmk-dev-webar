@@ -80,14 +80,15 @@ model-viewer::part(default-ar-button) {
 
 .side-meta {
   position: fixed;
-  right: 8px;
-  top: 50%;
+  right: 18px;
+  top: auto;
+  bottom: 18px;
   z-index: 10;
   display: flex;
   align-items: center;
   gap: 14px;
-  transform: translateY(-50%) rotate(-90deg);
-  transform-origin: center;
+  transform: rotate(-90deg);
+  transform-origin: bottom right;
 }
 
 .chimera-name {
