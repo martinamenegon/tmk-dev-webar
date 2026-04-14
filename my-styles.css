@@ -245,6 +245,10 @@ model-viewer::part(default-ar-button) {
   #about-content li {
     font-size: 20px;
   }
+
+  body.about-open .side-meta {
+    display: none;
+  }
 }
 
 

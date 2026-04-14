@@ -93,6 +93,7 @@
       async function openAbout() {
         await loadAboutContent();
         aboutOpen = true;
+        document.body.classList.add("about-open");
         aboutLayer.classList.add("is-visible");
         aboutLayer.setAttribute("aria-hidden", "false");
         aboutToggle.textContent = "X";
@@ -101,6 +102,7 @@
 
       function closeAbout() {
         aboutOpen = false;
+        document.body.classList.remove("about-open");
         aboutLayer.classList.remove("is-visible");
         aboutLayer.setAttribute("aria-hidden", "true");
         aboutToggle.textContent = "ABOUT";
