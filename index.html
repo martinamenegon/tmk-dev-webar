@@ -28,8 +28,12 @@ src = link to your glb asset
 shadow-intensity= how visible you want your shadows to be
 the rest leaveit as it is!-->
 
-    <button id="info-button" aria-label="Open info page">i</button>
+    <button id="info-button" aria-label="Open info page">Info</button>
     <button id="ar-button" aria-label="Open AR view">AR</button>
+    <aside id="qr-panel" aria-label="QR code for mobile view">
+      <p>Scan on mobile for AR</p>
+      <div id="qr-code"></div>
+    </aside>
 
     <section id="info-overlay" aria-hidden="true">
       <div class="info-content">
@@ -74,6 +78,7 @@ the rest leaveit as it is!-->
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script>
       const infoButton = document.getElementById("info-button");
       const arButton = document.getElementById("ar-button");
@@ -81,6 +86,7 @@ the rest leaveit as it is!-->
       const infoOverlay = document.getElementById("info-overlay");
       const modelViewer = document.getElementById("main-model-viewer");
       const aboutContent = document.getElementById("about-content");
+      const qrCodeContainer = document.getElementById("qr-code");
 
       let aboutLoaded = false;
 
@@ -112,11 +118,27 @@ the rest leaveit as it is!-->
         infoOverlay.setAttribute("aria-hidden", "true");
       }
 
+      function renderDesktopQrCode() {
+        const isDesktop = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+        if (!isDesktop || !qrCodeContainer) return;
+        if (qrCodeContainer.childElementCount > 0) return;
+
+        new QRCode(qrCodeContainer, {
+          text: window.location.href,
+          width: 108,
+          height: 108,
+          colorDark: "#ffffff",
+          colorLight: "transparent",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      }
+
       infoButton.addEventListener("click", openInfoPanel);
       closeInfoButton.addEventListener("click", closeInfoPanel);
       arButton.addEventListener("click", () => {
         modelViewer.activateAR();
       });
+      renderDesktopQrCode();
     </script>
   </body>
 </html>
