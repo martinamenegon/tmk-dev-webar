@@ -46,6 +46,9 @@
       <section id="about-layer" aria-hidden="true">
         <div id="about-content">Loading...</div>
       </section>
+      <section id="qr-layer" aria-hidden="true">
+        <div id="qr-code"></div>
+      </section>
 
       <aside class="side-meta" aria-label="Project metadata">
         <p class="credit-line">© name</p>
@@ -58,15 +61,19 @@
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <script>
       const aboutToggle = document.getElementById("about-toggle");
       const aboutLayer = document.getElementById("about-layer");
       const aboutContent = document.getElementById("about-content");
       const arButton = document.getElementById("ar-button");
       const modelViewer = document.getElementById("main-model-viewer");
+      const qrLayer = document.getElementById("qr-layer");
+      const qrCodeContainer = document.getElementById("qr-code");
 
       let aboutLoaded = false;
       let aboutOpen = false;
+      let qrReady = false;
 
       async function loadAboutContent() {
         if (aboutLoaded) return;
@@ -108,8 +115,36 @@
         }
       });
 
+      function ensureQrCode() {
+        if (qrReady) return;
+        new QRCode(qrCodeContainer, {
+          text: window.location.href,
+          width: 220,
+          height: 220,
+          colorDark: "#000000",
+          colorLight: "#ffffff",
+          correctLevel: QRCode.CorrectLevel.M
+        });
+        qrReady = true;
+      }
+
+      function isDesktopPointer() {
+        return window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+      }
+
       arButton.addEventListener("click", () => {
+        if (isDesktopPointer()) {
+          ensureQrCode();
+          qrLayer.classList.add("is-visible");
+          qrLayer.setAttribute("aria-hidden", "false");
+          return;
+        }
         modelViewer.activateAR();
+      });
+
+      qrLayer.addEventListener("click", () => {
+        qrLayer.classList.remove("is-visible");
+        qrLayer.setAttribute("aria-hidden", "true");
       });
     </script>
   </body>

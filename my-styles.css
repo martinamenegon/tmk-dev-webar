@@ -25,7 +25,7 @@ body {
 }
 
 #ar-button {
-  display: none;
+  display: inline;
   min-width: 0;
   height: auto;
   padding: 0;
@@ -130,6 +130,34 @@ model-viewer::part(default-ar-button) {
   display: block;
 }
 
+#qr-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+  display: none;
+  background: rgba(232, 232, 232, 0.94);
+}
+
+#qr-layer.is-visible {
+  display: grid;
+  place-items: center;
+}
+
+#qr-code {
+  width: 240px;
+  height: 240px;
+  padding: 10px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+#qr-code img,
+#qr-code canvas {
+  display: block;
+  width: 220px !important;
+  height: 220px !important;
+}
+
 #about-content {
   max-width: 860px;
 }
@@ -189,7 +217,6 @@ model-viewer::part(default-ar-button) {
   }
 
   #ar-button {
-    display: inline;
     font-size: 26px;
   }
 
