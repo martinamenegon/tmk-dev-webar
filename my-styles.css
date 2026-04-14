@@ -25,19 +25,16 @@ body {
 }
 
 #ar-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 74px;
-  height: 31px;
-  padding: 0 12px;
-  border: 1px solid rgba(10, 10, 10, 0.7);
-  border-radius: 10px;
+  display: none;
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  border: 0;
   background: transparent;
-  color: #111;
-  font-size: 10px;
+  color: rgba(196, 57, 26, 0.92);
+  font-size: 34px;
   font-weight: 500;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   line-height: 1;
   text-decoration: none;
@@ -46,7 +43,7 @@ body {
 }
 
 #ar-button:hover {
-  background: rgba(0, 0, 0, 0.05);
+  opacity: 0.75;
 }
 
 #about-link {
@@ -123,8 +120,12 @@ model-viewer::part(default-ar-button) {
   }
 
   .side-meta {
-    right: 4px;
+    right: 6px;
+    top: auto;
+    bottom: 14px;
     gap: 8px;
+    transform: rotate(-90deg);
+    transform-origin: bottom right;
   }
 
   .meta-top {
@@ -134,6 +135,11 @@ model-viewer::part(default-ar-button) {
   }
 
   #about-link {
+    font-size: 26px;
+  }
+
+  #ar-button {
+    display: inline;
     font-size: 26px;
   }
 }
