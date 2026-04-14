@@ -1,6 +1,8 @@
-# Name Surname
+# Chimera Name
 
-Write your bio or story here.
+by: your name 
+
+Write your chimera story here.
 
 You can use Markdown formatting, for example:
 
