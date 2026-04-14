@@ -120,9 +120,9 @@ model-viewer::part(default-ar-button) {
   }
 
   .side-meta {
-    right: 6px;
+    right: 2px;
     top: auto;
-    bottom: 14px;
+    bottom: 2px;
     gap: 8px;
     transform: rotate(-90deg);
     transform-origin: bottom right;
