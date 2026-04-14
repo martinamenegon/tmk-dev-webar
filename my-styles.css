@@ -1,28 +1,27 @@
 body {
   margin: 0;
-  padding: 18px;
-  min-height: 100vh;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   background-color: #e8e8e8;
-  box-sizing: border-box;
+  overflow: hidden;
   color: #111;
   font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .page-layout {
-  width: min(760px, 100%);
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: calc(100vh - 36px);
+  position: fixed;
+  inset: 0;
 }
 
 .meta-top {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  right: 18px;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2px;
 }
 
 #about-link,
@@ -53,13 +52,9 @@ body {
 }
 
 .viewer-stage {
-  position: relative;
-  flex: 1 1 auto;
-  min-height: 560px;
-  border: 1px solid rgba(0, 0, 0, 0.28);
-  border-radius: 20px;
-  overflow: hidden;
-  background: #dfdfdf;
+  position: fixed;
+  inset: 0;
+  background: #e8e8e8;
 }
 
 model-viewer {
@@ -74,66 +69,58 @@ model-viewer::part(default-ar-button) {
   display: none;
 }
 
-.mode-label {
-  position: absolute;
+.side-meta {
+  position: fixed;
   right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  margin: 0 0 10px;
-  font-size: 42px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.05em;
-  color: rgba(196, 57, 26, 0.82);
-}
-
-.meta-bottom {
+  bottom: 18px;
+  z-index: 10;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 2px 2px 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  transform: rotate(-90deg);
+  transform-origin: bottom right;
 }
 
 .chimera-name {
   margin: 0;
-  font-size: 43px;
-  line-height: 0.94;
-  letter-spacing: -0.01em;
+  font-size: 32px;
+  line-height: 1;
+  letter-spacing: 0;
   color: rgba(196, 57, 26, 0.9);
 }
 
 .credit-line {
   margin: 0;
-  font-size: 16px;
+  font-size: 20px;
   letter-spacing: 0.02em;
   color: rgba(196, 57, 26, 0.9);
 }
 
 @media (max-width: 700px) {
   body {
-    padding: 12px;
-  }
-
-  .page-layout {
-    min-height: calc(100vh - 24px);
-  }
-
-  .viewer-stage {
-    min-height: 62vh;
-    border-radius: 14px;
-  }
-
-  .mode-label {
-    font-size: 28px;
-    right: 12px;
+    height: 100dvh;
+    width: 100vw;
   }
 
   .chimera-name {
-    font-size: 30px;
+    font-size: 24px;
   }
 
   .credit-line {
-    font-size: 13px;
+    font-size: 15px;
+  }
+
+  .side-meta {
+    right: 12px;
+    bottom: 12px;
+    gap: 6px;
+  }
+
+  .meta-top {
+    top: 12px;
+    left: 12px;
+    right: 12px;
   }
 }
 
