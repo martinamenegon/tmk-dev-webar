@@ -61,19 +61,22 @@ model-viewer::part(default-ar-button) {
   top: 22px;
   right: 22px;
   z-index: 20;
-  width: 34px;
-  height: 34px;
+  min-width: 34px;
+  height: 30px;
+  padding: 0 10px;
   border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  background: transparent;
   color: white;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  line-height: 1;
+  line-height: 28px;
+  text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: none;
 }
 
 #ar-button:active {
@@ -85,21 +88,29 @@ model-viewer::part(default-ar-button) {
   border-color: rgba(255, 255, 255, 0.9);
 }
 
+@media (hover: none) and (pointer: coarse) {
+  #ar-button {
+    display: block;
+  }
+}
+
 #info-button {
   position: fixed;
   top: 22px;
   left: 22px;
   z-index: 20;
-  width: 34px;
-  height: 34px;
+  min-width: 34px;
+  height: 30px;
+  padding: 0 10px;
   border: 1px solid rgba(255, 255, 255, 0.55);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.45);
+  border-radius: 3px;
+  background: transparent;
   color: white;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 1;
+  line-height: 28px;
+  text-align: center;
   cursor: pointer;
   transition: all 0.2s ease;
 }
