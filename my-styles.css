@@ -3,24 +3,8 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  background-color: black; /* the background color of your page (if you do not use skybox map) */
+  background-color: #090909;
   overflow: hidden;
-}
-
-footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.18));
-  
-  font-family: "Helvetica Neue", Arial, sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.88);
-  text-align: center;
-  padding: 6px 10px 9px;
-  z-index: 15;
 }
 
 a:link {
@@ -47,12 +31,31 @@ hr {
   border-top: 0px solid white;
 }
 
-model-viewer {
-  width: 100vw;
-  height: 100vh;
+.page-layout {
   position: fixed;
   inset: 0;
-  right: 0px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+.viewer-card {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #050505;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
   background-color: unset;
 }
 
@@ -62,15 +65,11 @@ model-viewer::part(default-ar-button) {
 
 
 #ar-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 20;
-  min-width: 56px;
+  min-width: 72px;
   height: 30px;
-  padding: 0 12px;
+  padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   color: rgba(255, 255, 255, 0.95);
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -101,15 +100,11 @@ model-viewer::part(default-ar-button) {
 }
 
 #info-button {
-  position: fixed;
-  top: 20px;
-  left: 20px;
-  z-index: 20;
-  min-width: 56px;
+  min-width: 72px;
   height: 30px;
-  padding: 0 12px;
+  padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 2px;
+  border-radius: 8px;
   background: transparent;
   color: rgba(255, 255, 255, 0.95);
   font-family: "Helvetica Neue", Arial, sans-serif;
@@ -128,40 +123,29 @@ model-viewer::part(default-ar-button) {
   border-color: rgba(255, 255, 255, 0.85);
 }
 
-#qr-panel {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 19;
-  display: none;
-  width: 148px;
-  padding: 10px;
+.controls-panel {
+  flex: 0 0 auto;
   border: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 2px;
-  background: rgba(0, 0, 0, 0.38);
-  backdrop-filter: blur(2px);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(0, 0, 0, 0.18);
 }
 
-#qr-panel p {
-  margin: 0 0 8px;
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.credit-line {
+  margin: 8px 0 0;
+  text-align: center;
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-size: 10px;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.82);
-}
-
-#qr-code {
-  width: 108px;
-  height: 108px;
-  margin: 0 auto;
-}
-
-#qr-code img,
-#qr-code canvas {
-  display: block;
-  width: 108px !important;
-  height: 108px !important;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 #info-overlay {
@@ -263,10 +247,6 @@ model-viewer::part(default-ar-button) {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  #qr-panel {
-    display: block;
-  }
-
   #ar-button {
     display: none;
   }
