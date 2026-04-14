@@ -1,6 +1,6 @@
-# Name Surname
+# CHIMERA Name
 
-Write your bio or story here.
+by: Your Name 
 
 You can use Markdown formatting, for example:
 
