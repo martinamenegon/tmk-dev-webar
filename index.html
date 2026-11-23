@@ -33,7 +33,10 @@
         <model-viewer
           id="main-model-viewer"
           src="./assets/cube.glb"
-          <!-- ios-src="./assets/filename.usdz" -->
+          <!-- ios-src="./assets/filename.usdz" 
+          ios-src is only necessary if you have a rigged and animated object! 
+          Apple auto-converts .glb to .usdz for AR but the auto-conversion does not work for animated objects
+          so you need to add it extra!-->
  
           shadow-intensity="3"
           ar
